@@ -33,5 +33,42 @@ namespace MyLibraryFinally
             }
             return false;
         }
+        //Using
+        //Isthereinternetandconnectiontype
+        //string control = ControlProcess.Isthereinternet();
+        [DllImport("wininet.dll", CharSet = CharSet.Auto)]
+        extern static bool InternetGetConnectedState(ref InternetGetConnectedStateFlags Description, int ReservedValue);
+        [Flags]
+        public enum InternetGetConnectedStateFlags
+        {
+            INTERNET_CONNECTION_MODEM = 0x01,
+            INTERNET_CONNECTION_LAN = 0X02,
+            INTERNET_CONNECTION_PROXY = 0X04,
+            INTERNET_CONNECTION_RAS_INSTALLED = 0x10,
+            INTERNET_CONNECTION_OFFLINE = 0x20,
+            INTERNET_CONNECTION_CONFIGURED = 0x40
+        }
+        public static string Isthereinternet()
+        {
+            string Isconnection;
+            string Connectiontype;
+            InternetGetConnectedStateFlags flags = 0;
+            bool baglanti = InternetGetConnectedState(ref flags, 0);
+            if (baglanti)
+            {
+                Isconnection = "There is your connection.";
+            }
+            else
+            {
+                Isconnection = "There isn't your connection.";
+            }
+            if (flags == InternetGetConnectedStateFlags.INTERNET_CONNECTION_LAN)
+                Connectiontype = " Your connection is LAN.";
+            else
+            {
+                Connectiontype = " Your connection is WAN.";
+            }
+            return Isconnection + Connectiontype;
+        }
     }
 }
