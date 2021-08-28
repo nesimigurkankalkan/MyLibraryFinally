@@ -1,11 +1,20 @@
 ﻿using System;
 using System.Management;
+using System.Net;
 using System.Runtime.InteropServices;
 
 namespace MyLibraryFinally
 {
     public class ControlProcess
     {
+        //Using
+        //ComputerName
+        //string control = ControlProcess.Computername();
+        public static string Computername()
+        {
+            string bilgisayarAdi = Dns.GetHostName();
+            return bilgisayarAdi;
+        }
         //Using
         //IsthereFirewall
         //bool control = ControlProcess.FirewallOpened();
@@ -70,5 +79,6 @@ namespace MyLibraryFinally
             }
             return Isconnection + Connectiontype;
         }
+
     }
 }
