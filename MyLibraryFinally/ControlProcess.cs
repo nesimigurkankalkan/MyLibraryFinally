@@ -116,6 +116,37 @@ namespace MyLibraryFinally
             }
             return Isconnection + Connectiontype;
         }
+        //Using
+        //GetInfoRam
+        //string control = ControlProcess.InfoRam();
+        [DllImport("kernel32.dll")]
+        public static extern void GlobalMemoryStatusEx(ref MEMORYSTATUSEX hafiza);
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+        public struct MEMORYSTATUSEX
+        {
+            public uint dwLength;
+            public uint dwMemoryLoad;
+            public ulong ullTotalPhys;
+            public ulong ullAvailPhys;
+            public ulong ullTotalPageFile;
+            public ulong ullAvailPageFile;
+            public ulong ullTotalVirtual;
+            public ulong ullAvailVirtual;
+            public ulong ullAvailExtendedVirtual;
+        }
+        public static string InfoRam()
+        {
+            MEMORYSTATUSEX hafiza = new MEMORYSTATUSEX();
+            hafiza.dwLength = 64;
+            GlobalMemoryStatusEx(ref hafiza);
 
+            return "Kullanılan bellek yüzdesi= " + (hafiza.dwMemoryLoad) + "\r\n" +
+            "Toplam bellek miktarı= " + (hafiza.ullTotalPhys / (1024 * 1024)) + " mb \r\n" +
+            "Boş bellek miktarı= " + (hafiza.ullAvailPhys / (1024 * 1024)) + " mb \r\n" +
+            "Toplam page file miktarı= " + (hafiza.ullTotalPageFile / (1024 * 1024)) + " mb \r\n" +
+            "Boş page file miktarı= " + (hafiza.ullAvailPageFile / (1024 * 1024)) + " mb \r\n" +
+            "Toplam sanal bellek miktarı= " + (hafiza.ullTotalVirtual / (1024 * 1024)) + " mb \r\n" +
+            "Boş sanal bellek miktarı= " + (hafiza.ullAvailVirtual / (1024 * 1024)) + " mb";
+        }
     }
 }
