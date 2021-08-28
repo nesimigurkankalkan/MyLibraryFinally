@@ -118,6 +118,7 @@ namespace MyLibraryFinally
         }
         //Using
         //GetInfoCPU
+        //string control = ControlProcess.InfoCpu();
         public static string InfoCpu()
         {
             string info = "";
@@ -162,6 +163,21 @@ namespace MyLibraryFinally
             "Boş page file miktarı= " + (hafiza.ullAvailPageFile / (1024 * 1024)) + " mb \r\n" +
             "Toplam sanal bellek miktarı= " + (hafiza.ullTotalVirtual / (1024 * 1024)) + " mb \r\n" +
             "Boş sanal bellek miktarı= " + (hafiza.ullAvailVirtual / (1024 * 1024)) + " mb";
+        }
+        //Using
+        //GetAllDiskInfo
+        //string control = ControlProcess.Infoalldisk();
+        public static string Infoalldisk()
+        {
+            string info = "";
+            ManagementObjectSearcher disk = new ManagementObjectSearcher("Select FreeSpace,Size,Name from Win32_LogicalDisk where DriveType=3");
+            foreach (ManagementObject disk_bilgi in disk.Get())
+            {
+                info = "Disk Name: " + disk_bilgi["Name"].ToString() +
+                " Size (gb) : " + string.Format("{0:00.0}", Convert.ToDouble(disk_bilgi["Size"]) / (1024 * 1024)) +
+                " Free Size (gb) : " + string.Format("{0:00.0}", Convert.ToDouble(disk_bilgi["FreeSpace"]) / (1024 * 1024));
+            }
+            return info;
         }
     }
 }
