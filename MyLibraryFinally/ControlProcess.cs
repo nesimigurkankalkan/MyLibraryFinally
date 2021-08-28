@@ -179,5 +179,61 @@ namespace MyLibraryFinally
             }
             return info;
         }
+        //Using
+        //GetCpuTypeInfo
+        //string control = ControlProcess.CpuTypeInfo();
+        [DllImport("kernel32.dll")]
+        public static extern void GetSystemInfo([MarshalAs(UnmanagedType.Struct)] ref SYSTEM_INFO lpSystemInfo);
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct SYSTEM_INFO
+        {
+            internal _PROCESSOR_INFO_UNION uProcessorInfo;
+            public uint dwPageSize;
+            public IntPtr lpMinimumApplicationAddress;
+            public IntPtr lpMaximumApplicationAddress;
+            public IntPtr dwActiveProcessorMask;
+            public uint dwNumberOfProcessors;
+            public uint dwProcessorType;
+            public uint dwAllocationGranularity;
+            public ushort dwProcessorLevel;
+            public ushort dwProcessorRevision;
+        }
+        [StructLayout(LayoutKind.Explicit)]
+        public struct _PROCESSOR_INFO_UNION
+        {
+            [FieldOffset(0)]
+            internal uint dwOemId;
+            [FieldOffset(0)]
+            internal ushort wProcessorArchitecture;
+            [FieldOffset(2)]
+            internal ushort wReserved;
+        }
+        public static string CpuTypeInfo()
+        {
+            string info = "";
+            SYSTEM_INFO sysinfo = new SYSTEM_INFO();
+            GetSystemInfo(ref sysinfo);
+
+            switch (sysinfo.uProcessorInfo.wProcessorArchitecture)
+            {
+                case 9:
+                    info = "CPU Type = AMDx64";
+                    break;
+                case 6:
+                    info = "CPU Type = Itaniumx64";
+                    break;
+                case 0:
+                    info = "CPU Type = Intelx86";
+                    break;
+                default:
+                    info = "Unknown CPU Type";
+                    break;
+            }
+
+            return info + " CPU Logical Core Number = " + sysinfo.dwNumberOfProcessors.ToString() +
+             " Cache Memory Size = " + sysinfo.dwPageSize.ToString();
+        }
+
     }
 }
