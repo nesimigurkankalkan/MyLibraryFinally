@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Management;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
 
 namespace MyLibraryFinally
@@ -22,7 +23,7 @@ namespace MyLibraryFinally
         {
             string cname = Computername();
             string internalip = Dns.GetHostByName(cname).AddressList[0].ToString();
-            return "LAN IP Adresi : " + internalip;
+            return internalip;
         }
         //Using
         //GetWanIpAdress
@@ -31,6 +32,25 @@ namespace MyLibraryFinally
         {
             string externalip = new WebClient().DownloadString("http://icanhazip.com");
             return externalip;
+        }
+        //Using
+        //GetMacAdress
+        //string control = ControlProcess.Macadress();
+        public static string Macadress()
+        {
+            string mac = "";
+            foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+            {
+
+                if (nic.OperationalStatus == OperationalStatus.Up && (!nic.Description.Contains("Virtual") && !nic.Description.Contains("Pseudo")))
+                {
+                    if (nic.GetPhysicalAddress().ToString() != "")
+                    {
+                        mac = nic.GetPhysicalAddress().ToString();
+                    }
+                }
+            }
+            return mac;
         }
         //Using
         //IsthereFirewall
