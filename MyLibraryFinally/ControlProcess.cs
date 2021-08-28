@@ -117,6 +117,21 @@ namespace MyLibraryFinally
             return Isconnection + Connectiontype;
         }
         //Using
+        //GetInfoCPU
+        public static string InfoCpu()
+        {
+            string info = "";
+            ManagementObjectSearcher cpu = new ManagementObjectSearcher
+                ("Select Name, NumberOfLogicalProcessors, L2CacheSize From Win32_Processor");
+            foreach (ManagementObject cpu_bilgi in cpu.Get())
+            {
+                info = "CPU Name : " + (cpu_bilgi["Name"]).ToString() +
+                " CPU Core Number : " + (cpu_bilgi["NumberOfLogicalProcessors"]).ToString() +
+                " L2 Cache Size : " + (cpu_bilgi["L2CacheSize"]).ToString();
+            }
+            return info;
+        }
+        //Using
         //GetInfoRam
         //string control = ControlProcess.InfoRam();
         [DllImport("kernel32.dll")]
