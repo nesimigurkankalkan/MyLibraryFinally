@@ -16,6 +16,23 @@ namespace MyLibraryFinally
             return bilgisayarAdi;
         }
         //Using
+        //GetLanIpAdress
+        //string control = ControlProcess.Lanipadress();
+        public static string Lanipadress()
+        {
+            string cname = Computername();
+            string internalip = Dns.GetHostByName(cname).AddressList[0].ToString();
+            return "LAN IP Adresi : " + internalip;
+        }
+        //Using
+        //GetWanIpAdress
+        //string control = ControlProcess.Wanipadress();
+        public static string Wanipadress()
+        {
+            string externalip = new WebClient().DownloadString("http://icanhazip.com");
+            return externalip;
+        }
+        //Using
         //IsthereFirewall
         //bool control = ControlProcess.FirewallOpened();
         public static bool FirewallOpened()
