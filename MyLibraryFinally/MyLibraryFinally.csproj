@@ -56,11 +56,14 @@
     <Compile Include="DBProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\ProtectVariableonPhysicalRam.cs" />
-    <Compile Include="UsefulMethods.cs" />
+    <Compile Include="OtherMethods.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="JsLibrary\Ajax.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
