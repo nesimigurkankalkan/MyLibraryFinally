@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyLibraryFinally
 {
-    public class UsefulMethods
+    public class OtherMethods
     {
         //Using
         //SeperateWord("Gürkan Nesimi Kalkan");
