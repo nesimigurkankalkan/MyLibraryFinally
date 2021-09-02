@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyLibraryFinally
 {
-    public class DataVerify
+    public class DataVerifier
     {
         public enum KontrolTipleri
         {
