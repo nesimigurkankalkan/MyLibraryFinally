@@ -52,13 +52,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlDataTable.cs" />
     <Compile Include="ControlProcess.cs" />
     <Compile Include="DBProcess.cs" />
+    <Compile Include="Enums.cs" />
     <Compile Include="ErrorTypes.cs" />
+    <Compile Include="Log.cs" />
+    <Compile Include="Mail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\CryptographyNoHashAlgorithm.cs" />
     <Compile Include="Security\ProtectVariableonPhysicalRam.cs" />
     <Compile Include="OtherMethods.cs" />
+    <Compile Include="DataVerifier.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
