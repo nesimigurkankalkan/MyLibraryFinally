@@ -22,3 +22,13 @@ C:\Users\gurka\Desktop\git\MyLibraryFinally\MyLibraryFinally\bin\Debug\EntityFra
 C:\Users\gurka\Desktop\git\MyLibraryFinally\MyLibraryFinally\bin\Debug\EntityFramework.xml
 C:\Users\gurka\Desktop\git\MyLibraryFinally\MyLibraryFinally\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\gurka\Desktop\git\MyLibraryFinally\MyLibraryFinally\obj\Debug\MyLibraryFinally.csproj.CopyComplete
+C:\Users\gurkan.kalkan\Desktop\GurkanProjects\github\CloneProjects\MyLibraryFinally\MyLibraryFinally\obj\Debug\MyLibraryFinally.csprojResolveAssemblyReference.cache
+C:\Users\gurkan.kalkan\Desktop\GurkanProjects\github\CloneProjects\MyLibraryFinally\MyLibraryFinally\obj\Debug\MyLibraryFinally.dll
+C:\Users\gurkan.kalkan\Desktop\GurkanProjects\github\CloneProjects\MyLibraryFinally\MyLibraryFinally\obj\Debug\MyLibraryFinally.pdb
+C:\Users\gurkan.kalkan\Desktop\GurkanProjects\github\CloneProjects\MyLibraryFinally\MyLibraryFinally\bin\Debug\MyLibraryFinally.dll.config
+C:\Users\gurkan.kalkan\Desktop\GurkanProjects\github\CloneProjects\MyLibraryFinally\MyLibraryFinally\bin\Debug\MyLibraryFinally.dll
+C:\Users\gurkan.kalkan\Desktop\GurkanProjects\github\CloneProjects\MyLibraryFinally\MyLibraryFinally\bin\Debug\MyLibraryFinally.pdb
+C:\Users\gurkan.kalkan\Desktop\GurkanProjects\github\CloneProjects\MyLibraryFinally\MyLibraryFinally\bin\Debug\EntityFramework.dll
+C:\Users\gurkan.kalkan\Desktop\GurkanProjects\github\CloneProjects\MyLibraryFinally\MyLibraryFinally\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\gurkan.kalkan\Desktop\GurkanProjects\github\CloneProjects\MyLibraryFinally\MyLibraryFinally\bin\Debug\EntityFramework.xml
+C:\Users\gurkan.kalkan\Desktop\GurkanProjects\github\CloneProjects\MyLibraryFinally\MyLibraryFinally\bin\Debug\EntityFramework.SqlServer.xml
