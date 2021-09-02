@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -12,12 +13,12 @@ namespace MyLibraryFinally
         //Using
         //SeperateWord("Gürkan Nesimi Kalkan");
         #region KelimelerineAyir
-        public static string SeperateWord(string word)
+        public static string[] SeperateWord(string word)
         {
             string[] s;
             s = word.Split(' ');
             string tamad = s[1] + " " + s[0] + " " + s[2];
-            return tamad;
+            return s;
         }
         #endregion
         //Using
@@ -416,5 +417,153 @@ namespace MyLibraryFinally
             }
         }
         #endregion
+        //Doviz Simgeleri
+        #region CurrencySymbol
+        public static class CurrencyTools
+        {
+            private static IDictionary<string, string> map;
+            static CurrencyTools()
+            {
+                map = CultureInfo
+                .GetCultures(CultureTypes.AllCultures)
+                .Where(c => !c.IsNeutralCulture)
+                .Select(culture =>
+                {
+                    try
+                    {
+                        return new RegionInfo(culture.LCID);
+                    }
+                    catch
+                    {
+                        return null;
+                    }
+                })
+                .Where(ri => ri != null)
+                .GroupBy(ri => ri.ISOCurrencySymbol)
+                .ToDictionary(x => x.Key, x => x.First().CurrencySymbol);
+            }
+
+            public static bool TryGetCurrencySymbolWithEnum(currencyName ISOCurrencySymbol, out string symbol)
+            {
+                return map.TryGetValue(ISOCurrencySymbol.ToString(), out symbol);
+            }
+
+            public static bool TryGetCurrencySymbolWithString(string ISOCurrencySymbol, out string symbol)
+            {
+                return map.TryGetValue(ISOCurrencySymbol, out symbol);
+            }
+
+            public enum currencyName
+            {
+                AED,
+                AFN,
+                ALL,
+                AMD,
+                ARS,
+                AUD,
+                AZN,
+                BAM,
+                BDT,
+                BGN,
+                BHD,
+                BND,
+                BOB,
+                BRL,
+                BYR,
+                BZD,
+                CAD,
+                CHF,
+                CLP,
+                CNY,
+                COP,
+                CRC,
+                CSD,
+                CZK,
+                DKK,
+                DOP,
+                DZD,
+                EEK,
+                EGP,
+                ETB,
+                EUR,
+                GBP,
+                GEL,
+                GTQ,
+                HKD,
+                HNL,
+                HRK,
+                HUF,
+                IDR,
+                ILS,
+                INR,
+                IQD,
+                IRR,
+                ISK,
+                JMD,
+                JOD,
+                JPY,
+                KES,
+                KGS,
+                KHR,
+                KRW,
+                KWD,
+                KZT,
+                LAK,
+                LBP,
+                LKR,
+                LTL,
+                LVL,
+                LYD,
+                MAD,
+                MKD,
+                MNT,
+                MOP,
+                MVR,
+                MXN,
+                MYR,
+                NIO,
+                NOK,
+                NPR,
+                NZD,
+                OMR,
+                PAB,
+                PEN,
+                PHP,
+                PKR,
+                PLN,
+                PYG,
+                QAR,
+                RON,
+                RSD,
+                RUB,
+                RWF,
+                SAR,
+                SEK,
+                SGD,
+                SYP,
+                THB,
+                TJS,
+                TMT,
+                TND,
+                TRY,
+                TTD,
+                TWD,
+                UAH,
+                USD,
+                UYU,
+                UZS,
+                VEF,
+                VND,
+                XOF,
+                YER,
+                ZAR,
+                ZWL,
+            }
+        }
+        #endregion
+
+
+        //Ondalık Ayırıcı
+        public static string ondalikSperator { get { return CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator; } }
     }
 }
