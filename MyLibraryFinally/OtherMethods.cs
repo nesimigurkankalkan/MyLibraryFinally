@@ -417,6 +417,129 @@ namespace MyLibraryFinally
             }
         }
         #endregion
+
+        //Using
+        //string getasstringfrombyte = ByteToString(0);
+        #region TypeConvert
+        public static string ByteToString(byte? deger)
+        {
+            if (deger.HasValue) return deger.Value.ToString();
+            else return "";
+        }
+
+        public static string TamSayiToString(int? deger)
+        {
+            if (deger.HasValue) return deger.Value.ToString();
+            else return "";
+        }
+
+        public static string TamSayiToString(int? deger, string donenDeger)
+        {
+            if (deger.HasValue) return deger.Value.ToString();
+            else return donenDeger;
+        }
+
+        public static string DoubleToString(double? deger)
+        {
+            if (deger.HasValue) return deger.Value.ToString();
+            else return "";
+        }
+
+        public static string DoubleToString(double? deger, string donenDeger)
+        {
+            if (deger.HasValue) return deger.Value.ToString();
+            else return donenDeger;
+        }
+
+        public static double? StringToDouble(string deger)
+        {
+            if (!String.IsNullOrEmpty(deger)) return Convert.ToDouble(deger);
+            else return (double?)null;
+        }
+
+        public static double? StringToDouble(string deger, double donenDeger)
+        {
+            if (!String.IsNullOrEmpty(deger)) return Convert.ToDouble(deger);
+            else return (double?)donenDeger;
+        }
+
+        public static int? StringToTamSayi(string deger)
+        {
+            if (!String.IsNullOrEmpty(deger)) return Convert.ToInt32(deger);
+            else return (int?)null;
+        }
+
+        public static int? StringToTamSayi(string deger, int donenDeger)
+        {
+            if (!String.IsNullOrEmpty(deger)) return Convert.ToInt32(deger);
+            else return (int?)donenDeger;
+        }
+
+        public static string StringNullToStringBos(string deger)
+        {
+            if (!String.IsNullOrEmpty(deger)) return deger;
+            else return "";
+        }
+
+        public static int? StringToTamSayiNull(string deger)
+        {
+            if (!String.IsNullOrEmpty(deger) && deger != "0") return Convert.ToInt32(deger);
+            else return (int?)null;
+        }
+
+        public static int StringToTamSayiId(string deger)
+        {
+            int sonuc = 0;
+            if (!String.IsNullOrEmpty(deger))
+            {
+                sonuc = Convert.ToInt32(deger);
+            }
+            else
+            {
+                throw new NullReferenceException();
+            }
+            return sonuc;
+        }
+
+        public static string TarihToString(DateTime? deger)
+        {
+            if (deger.HasValue) return deger.Value.ToString();
+            else return "";
+        }
+
+        public static string TarihToStringSaatDakika(DateTime? deger)
+        {
+            string sonuc = "";
+            if (deger.HasValue)
+            {
+                sonuc = deger.Value.ToShortDateString();
+                if (deger.Value.TimeOfDay.ToString() != "00:00:00")
+                {
+                    sonuc = Convert.ToDateTime(deger.Value).ToString("dd.MM.yyyy HH:mm");
+                }
+            }
+            return sonuc;
+        }
+
+        public static string TarihToStringGun(DateTime? deger)
+        {
+            if (deger.HasValue) return deger.Value.ToShortDateString();
+            else return "";
+        }
+
+        public static DateTime? StringToTarih(string deger)
+        {
+            if (!String.IsNullOrEmpty(deger)) return Convert.ToDateTime(deger);
+            else return (DateTime?)null;
+        }
+
+        public static void StringNullKontrol(string deger)
+        {
+            if (String.IsNullOrEmpty(deger))
+                throw new Exception("Boş Olmaması Gereken Bir Alanın Boş Olması Sebebiyle, İşleminiz Gerçekleştirilemiyor.");
+        }
+        #endregion
+
         //Doviz Simgeleri
         #region CurrencySymbol
         public static class CurrencyTools
@@ -561,7 +684,6 @@ namespace MyLibraryFinally
             }
         }
         #endregion
-
 
         //Ondalık Ayırıcı
         public static string ondalikSperator { get { return CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator; } }
