@@ -29,9 +29,9 @@ namespace MyLibraryFinally
             //    strKullanici = HttpContext.Current.Session["displayName"].ToString();
             //}
 
-            //SqlConnection cno = new SqlConnection(ConfigurationManager.ConnectionStrings["ExampleDB"].ToString());
+            //SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ExampleDB"].ToString());
             //cno.Open();
-            //SqlCommand cmdLogAt = new SqlCommand("insert into log (TarihSaat,Kullanici,Ip,Mesaj) values ('" + tarih.ToString() + "','" + strKullanici + "','" + strIp + "','" + strLogCumlesi + "')", cno);
+            //SqlCommand cmdLogAt = new SqlCommand("insert into log (TarihSaat,Kullanici,Ip,Mesaj) values ('" + tarih.ToString() + "','" + strKullanici + "','" + strIp + "','" + strLogCumlesi + "')", con);
 
             //cmdLogAt.ExecuteNonQuery();
             //cno.Close();
