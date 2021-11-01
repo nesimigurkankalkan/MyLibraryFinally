@@ -17,7 +17,7 @@ namespace MyLibraryFinally
         public Mail()
         {
             //
-            // TODO: Add constructor logic here
+            // TODO: Add constructor logic here.
             //
         }
         public static void EpostaHtmlBireBir(string firma, string kime, string kimden, string kimdenAd, string konu, string icerik, params string[] CC)
