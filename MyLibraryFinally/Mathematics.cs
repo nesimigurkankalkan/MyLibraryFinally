@@ -40,6 +40,7 @@ namespace MyLibraryFinally
             else
                 return 0;
         }
+
         //Using
         //IsPrime - Asal sayı mı ?
         //Console.WriteLine("{0}", Mathematics.IsPrime(n) ? "Asal sayi." : "Asal sayi degil!");
@@ -63,5 +64,19 @@ namespace MyLibraryFinally
 
         }
 
+        //Using
+        //SeperateEveryNumberAndSum - Parametre olarak aldıgı sayının her bir rakamını ayırıp birbirleriyle toplayıp sonucu geri doner.
+        //Console.WriteLine("{0} sayinin rakamlari toplami = {1}",n, Mathematics.SeperateEveryNumberAndSum(n));
+        public static int SeperateEveryNumberAndSum(int n)
+        {
+            int toplam = 0, rakam = 0;
+            while (n>0)
+	        {
+                rakam = n % 10;
+                toplam += rakam;
+                n = n / 10; 
+	        }
+            return toplam;
+        }
     }
 }
